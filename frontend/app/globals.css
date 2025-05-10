@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 210 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair;
+  }
+  p,
+  span,
+  button,
+  input,
+  textarea {
+    @apply font-inter;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  .luxury-card {
+    @apply bg-card/80 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl;
+  }
+
+  .glow-button {
+    @apply bg-primary/90 hover:bg-primary text-white font-medium py-3 px-8 rounded-full 
+           transition-all duration-300 shadow-lg;
+  }
+
+  .glow-button:hover {
+    @apply shadow-xl;
+  }
+
+  .pill-button {
+    @apply px-6 py-2 rounded-full border border-white/20 hover:border-white/40 
+           transition-all duration-300 hover:bg-white/5;
+  }
+
+  .pill-button-active {
+    @apply px-6 py-2 rounded-full border border-primary bg-primary/20 text-white;
+  }
+}
+
+/* Define chat bubbles without @apply to avoid spacing issues */
+.chat-bubble-user {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-bottom-left-radius: 0;
+  max-width: 80%;
+  align-self: flex-start;
+}
+
+.chat-bubble-car {
+  background-color: hsl(var(--secondary));
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-bottom-right-radius: 0;
+  max-width: 80%;
+  align-self: flex-end;
+}
+
+/* Custom calendar styles */
+.custom-calendar button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

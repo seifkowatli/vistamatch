@@ -1,0 +1,12 @@
+{
+  "Lifestyle Vibe": "Explorer",
+  "Emotional Drivers": "Freedom",
+  "Daily Routine": "Weekend getaways",
+  "Weekend Personality": "Off-roader",
+  "Social Expression": "Travel blogging",
+  "Preferred Car Traits": "Responsive drive",
+  "Ownership Style": "Lease",
+  "Purchase Concerns": "Maintenance",
+  "Decision Behavior": "Analytical",
+  "Brand Relationship": "New to luxury"
+}

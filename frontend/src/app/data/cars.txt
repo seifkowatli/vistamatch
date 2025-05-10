@@ -1,0 +1,122 @@
+[
+  {
+    "Model Identity": "Urban",
+    "Usage History": "City-driven",
+    "Ownership Style": "Fleet-owned",
+    "Service Behavior": "Fully documented",
+    "Emotional Tone": "Loyal Companion",
+    "Visual Vibe": "Understated",
+    "Interior Energy": "Cozy",
+    "Notable Memories": "Daily commutes",
+    "Driving Feel": "Stable",
+    "Voice (for storytelling)": "Wise"
+  },
+  {
+    "Model Identity": "Sporty",
+    "Usage History": "Light use",
+    "Ownership Style": "Single-owner",
+    "Service Behavior": "Regularly maintained",
+    "Emotional Tone": "Wild Spirit",
+    "Visual Vibe": "Bold",
+    "Interior Energy": "Driver-focused",
+    "Notable Memories": "Track days",
+    "Driving Feel": "Responsive",
+    "Voice (for storytelling)": "Playful"
+  },
+  {
+    "Model Identity": "Classic",
+    "Usage History": "Long-distance",
+    "Ownership Style": "Collector-owned",
+    "Service Behavior": "Delayed maintenance",
+    "Emotional Tone": "Nostalgic",
+    "Visual Vibe": "Vintage",
+    "Interior Energy": "Minimalist",
+    "Notable Memories": "Photo shoots",
+    "Driving Feel": "Relaxed",
+    "Voice (for storytelling)": "Humble"
+  },
+  {
+    "Model Identity": "Executive",
+    "Usage History": "Family",
+    "Ownership Style": "Fleet-owned",
+    "Service Behavior": "Fully documented",
+    "Emotional Tone": "Understated",
+    "Visual Vibe": "Sleek",
+    "Interior Energy": "Tech-heavy",
+    "Notable Memories": "Corporate events",
+    "Driving Feel": "Smooth",
+    "Voice (for storytelling)": "Bold"
+  },
+  {
+    "Model Identity": "Adventurous",
+    "Usage History": "Off-road",
+    "Ownership Style": "Single-owner",
+    "Service Behavior": "Regularly maintained",
+    "Emotional Tone": "Urban Warrior",
+    "Visual Vibe": "Futuristic",
+    "Interior Energy": "Driver-focused",
+    "Notable Memories": "Cross-country trips",
+    "Driving Feel": "Aggressive",
+    "Voice (for storytelling)": "Youthful"
+  },
+  {
+    "Model Identity": "Urban",
+    "Usage History": "City-driven",
+    "Ownership Style": "Collector-owned",
+    "Service Behavior": "Delayed maintenance",
+    "Emotional Tone": "Loyal Companion",
+    "Visual Vibe": "Bold",
+    "Interior Energy": "Cozy",
+    "Notable Memories": "Weekend errands",
+    "Driving Feel": "Smooth",
+    "Voice (for storytelling)": "Wise"
+  },
+  {
+    "Model Identity": "Sporty",
+    "Usage History": "Family",
+    "Ownership Style": "Fleet-owned",
+    "Service Behavior": "Fully documented",
+    "Emotional Tone": "Wild Spirit",
+    "Visual Vibe": "Understated",
+    "Interior Energy": "Tech-heavy",
+    "Notable Memories": "Road trips",
+    "Driving Feel": "Responsive",
+    "Voice (for storytelling)": "Playful"
+  },
+  {
+    "Model Identity": "Classic",
+    "Usage History": "Long-distance",
+    "Ownership Style": "Single-owner",
+    "Service Behavior": "Regularly maintained",
+    "Emotional Tone": "Nostalgic",
+    "Visual Vibe": "Sleek",
+    "Interior Energy": "Minimalist",
+    "Notable Memories": "Vintage rallies",
+    "Driving Feel": "Relaxed",
+    "Voice (for storytelling)": "Humble"
+  },
+  {
+    "Model Identity": "Executive",
+    "Usage History": "Off-road",
+    "Ownership Style": "Collector-owned",
+    "Service Behavior": "Delayed maintenance",
+    "Emotional Tone": "Understated",
+    "Visual Vibe": "Vintage",
+    "Interior Energy": "Driver-focused",
+    "Notable Memories": "Mountain trips",
+    "Driving Feel": "Stable",
+    "Voice (for storytelling)": "Bold"
+  },
+  {
+    "Model Identity": "Adventurous",
+    "Usage History": "Light use",
+    "Ownership Style": "Fleet-owned",
+    "Service Behavior": "Fully documented",
+    "Emotional Tone": "Urban Warrior",
+    "Visual Vibe": "Futuristic",
+    "Interior Energy": "Cozy",
+    "Notable Memories": "Camping trips",
+    "Driving Feel": "Aggressive",
+    "Voice (for storytelling)": "Youthful"
+  }
+]

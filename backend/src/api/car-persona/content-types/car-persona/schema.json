@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_personas",
+  "info": {
+    "singularName": "car-persona",
+    "pluralName": "car-personas",
+    "displayName": "Car Persona"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "modelIdentity": {
+      "type": "enumeration",
+      "enum": ["Sporty", "Classic", "Executive", "Adventurous", "Urban"]
+    },
+    "usageHistory": {
+      "type": "enumeration",
+      "enum": ["City-driven", "Off-road", "Long-distance", "Family", "Light use"],
+      "multiple": true
+    },
+    "ownershipStyle": {
+      "type": "enumeration",
+      "enum": ["Single-owner", "Fleet-owned", "Collector-owned"]
+    },
+    "serviceBehavior": {
+      "type": "enumeration",
+      "enum": ["Regularly maintained", "Delayed maintenance", "Fully documented"]
+    },
+    "emotionalTone": {
+      "type": "enumeration",
+      "enum": ["Nostalgic", "Loyal Companion", "Wild Spirit", "Urban Warrior"]
+    },
+    "visualVibe": {
+      "type": "enumeration",
+      "enum": ["Sleek", "Bold", "Understated", "Vintage", "Futuristic"]
+    },
+    "interiorEnergy": {
+      "type": "enumeration",
+      "enum": ["Minimalist", "Tech-heavy", "Cozy", "Driver-focused"],
+      "multiple": true
+    },
+    "notableMemories": {
+      "type": "json"
+    },
+    "drivingFeel": {
+      "type": "enumeration",
+      "enum": ["Aggressive", "Smooth", "Relaxed", "Responsive", "Stable"]
+    },
+    "voice": {
+      "type": "enumeration",
+      "enum": ["Humble", "Bold", "Playful", "Wise", "Youthful"]
+    }
+  }
+}

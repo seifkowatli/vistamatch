@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customer_personas",
+  "info": {
+    "singularName": "customer-persona",
+    "pluralName": "customer-personas",
+    "displayName": "Customer Persona"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lifestyleVibe": {
+      "type": "enumeration",
+      "enum": ["Minimalist", "Explorer", "Family-focused", "Luxury-seeker", "Tech-savvy"]
+    },
+    "emotionalDrivers": {
+      "type": "enumeration",
+      "enum": ["Nostalgia", "Status", "Comfort", "Freedom", "Sustainability"],
+      "multiple": true
+    },
+    "dailyRoutine": {
+      "type": "enumeration",
+      "enum": ["Commute-heavy", "Remote worker", "City errands", "Weekend getaways"]
+    },
+    "weekendPersonality": {
+      "type": "enumeration",
+      "enum": ["Chill-at-home", "Off-roader", "Cafe-hopper", "Clubber"]
+    },
+    "socialExpression": {
+      "type": "enumeration",
+      "enum": ["Instagram aesthetics", "Photography", "Travel blogging", "Low-profile"],
+      "multiple": true
+    },
+    "preferredCarTraits": {
+      "type": "enumeration",
+      "enum": ["Responsive drive", "Quiet cabin", "Bold design", "Cargo space"],
+      "multiple": true
+    },
+    "ownershipStyle": {
+      "type": "enumeration",
+      "enum": ["Lease", "Long-term keeper", "Flipper", "Sentimental buyer"]
+    },
+    "purchaseConcerns": {
+      "type": "enumeration",
+      "enum": ["Price sensitivity", "Maintenance", "Resale value", "Performance"],
+      "multiple": true
+    },
+    "decisionBehavior": {
+      "type": "enumeration",
+      "enum": ["Impulsive", "Analytical", "Emotional", "Peer-influenced"]
+    },
+    "brandRelationship": {
+      "type": "enumeration",
+      "enum": ["Lifelong Mercedes fan", "New to luxury", "AMG enthusiast"]
+    }
+  }
+}

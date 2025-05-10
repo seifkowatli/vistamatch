@@ -373,6 +373,127 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCarPersonaCarPersona extends Struct.CollectionTypeSchema {
+  collectionName: 'car_personas';
+  info: {
+    displayName: 'Car Persona';
+    pluralName: 'car-personas';
+    singularName: 'car-persona';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    drivingFeel: Schema.Attribute.Enumeration<
+      ['Aggressive', 'Smooth', 'Relaxed', 'Responsive', 'Stable']
+    >;
+    emotionalTone: Schema.Attribute.Enumeration<
+      ['Nostalgic', 'Loyal Companion', 'Wild Spirit', 'Urban Warrior']
+    >;
+    interiorEnergy: Schema.Attribute.Enumeration<
+      ['Minimalist', 'Tech-heavy', 'Cozy', 'Driver-focused']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::car-persona.car-persona'
+    > &
+      Schema.Attribute.Private;
+    modelIdentity: Schema.Attribute.Enumeration<
+      ['Sporty', 'Classic', 'Executive', 'Adventurous', 'Urban']
+    >;
+    name: Schema.Attribute.String;
+    notableMemories: Schema.Attribute.JSON;
+    ownershipStyle: Schema.Attribute.Enumeration<
+      ['Single-owner', 'Fleet-owned', 'Collector-owned']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceBehavior: Schema.Attribute.Enumeration<
+      ['Regularly maintained', 'Delayed maintenance', 'Fully documented']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    usageHistory: Schema.Attribute.Enumeration<
+      ['City-driven', 'Off-road', 'Long-distance', 'Family', 'Light use']
+    >;
+    visualVibe: Schema.Attribute.Enumeration<
+      ['Sleek', 'Bold', 'Understated', 'Vintage', 'Futuristic']
+    >;
+    voice: Schema.Attribute.Enumeration<
+      ['Humble', 'Bold', 'Playful', 'Wise', 'Youthful']
+    >;
+  };
+}
+
+export interface ApiCustomerPersonaCustomerPersona
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'customer_personas';
+  info: {
+    displayName: 'Customer Persona';
+    pluralName: 'customer-personas';
+    singularName: 'customer-persona';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brandRelationship: Schema.Attribute.Enumeration<
+      ['Lifelong Mercedes fan', 'New to luxury', 'AMG enthusiast']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dailyRoutine: Schema.Attribute.Enumeration<
+      ['Commute-heavy', 'Remote worker', 'City errands', 'Weekend getaways']
+    >;
+    decisionBehavior: Schema.Attribute.Enumeration<
+      ['Impulsive', 'Analytical', 'Emotional', 'Peer-influenced']
+    >;
+    emotionalDrivers: Schema.Attribute.Enumeration<
+      ['Nostalgia', 'Status', 'Comfort', 'Freedom', 'Sustainability']
+    >;
+    lifestyleVibe: Schema.Attribute.Enumeration<
+      [
+        'Minimalist',
+        'Explorer',
+        'Family-focused',
+        'Luxury-seeker',
+        'Tech-savvy',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::customer-persona.customer-persona'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    ownershipStyle: Schema.Attribute.Enumeration<
+      ['Lease', 'Long-term keeper', 'Flipper', 'Sentimental buyer']
+    >;
+    preferredCarTraits: Schema.Attribute.Enumeration<
+      ['Responsive drive', 'Quiet cabin', 'Bold design', 'Cargo space']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    purchaseConcerns: Schema.Attribute.Enumeration<
+      ['Price sensitivity', 'Maintenance', 'Resale value', 'Performance']
+    >;
+    socialExpression: Schema.Attribute.Enumeration<
+      ['Instagram aesthetics', 'Photography', 'Travel blogging', 'Low-profile']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    weekendPersonality: Schema.Attribute.Enumeration<
+      ['Chill-at-home', 'Off-roader', 'Cafe-hopper', 'Clubber']
+    >;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -882,6 +1003,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::car-persona.car-persona': ApiCarPersonaCarPersona;
+      'api::customer-persona.customer-persona': ApiCustomerPersonaCustomerPersona;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

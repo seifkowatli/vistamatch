@@ -1,103 +1,224 @@
-import Image from "next/image";
+'use client'
+import { useState, useRef, useEffect } from 'react'
 
-export default function Home() {
+type Message = { role: 'user' | 'assistant'; content: string }
+type Character = {
+  id: string
+  name: string
+  attributes: Record<string,string>
+}
+
+const MODES: Record<'car'|'customer',{ label:string; characters:Character[] }> = {
+  car: {
+    label: 'Car Mode',
+    characters: [
+      {
+        id: 'gclass',
+        name: 'G-Class',
+        attributes: {
+          'Model Identity': 'Adventurous',
+          'Usage History': 'Off-road',
+          'Ownership Style': 'Single-owner',
+          'Service Behavior': 'Regularly maintained',
+          'Emotional Tone': 'Wild Spirit',
+          'Visual Vibe': 'Bold',
+          'Interior Energy': 'Driver-focused',
+          'Notable Memories': 'Long journeys',
+          'Driving Feel': 'Responsive',
+          'Voice': 'Bold'
+        }
+      },
+      {
+        id: 'e200',
+        name: 'E-200',
+        attributes: {
+          'Model Identity': 'Executive',
+          'Usage History': 'City-driven',
+          'Ownership Style': 'Fleet-owned',
+          'Service Behavior': 'Fully documented',
+          'Emotional Tone': 'Loyal Companion',
+          'Visual Vibe': 'Sleek',
+          'Interior Energy': 'Tech-heavy',
+          'Notable Memories': 'Corporate events',
+          'Driving Feel': 'Smooth',
+          'Voice': 'Wise'
+        }
+      },
+      {
+        id: 'c63',
+        name: 'C-63 AMG',
+        attributes: {
+          'Model Identity': 'Sporty',
+          'Usage History': 'Light use',
+          'Ownership Style': 'Collector-owned',
+          'Service Behavior': 'Delayed maintenance',
+          'Emotional Tone': 'Youthful',
+          'Visual Vibe': 'Futuristic',
+          'Interior Energy': 'Minimalist',
+          'Notable Memories': 'Track days',
+          'Driving Feel': 'Aggressive',
+          'Voice': 'Playful'
+        }
+      }
+    ]
+  },
+  customer: {
+    label: 'Customer Mode',
+    characters: [
+      {
+        id: 'person1',
+        name: 'Person 1',
+        attributes: {
+          'Lifestyle Vibe': 'Tech-savvy',
+          'Emotional Drivers': 'Freedom',
+          'Daily Routine': 'Remote worker',
+          'Weekend Personality': 'Cafe-hopper',
+          'Social Expression': 'Photography',
+          'Preferred Car Traits': 'Quiet cabin',
+          'Ownership Style': 'Long-term keeper',
+          'Purchase Concerns': 'Performance',
+          'Decision Behavior': 'Analytical',
+          'Brand Relationship': 'New to luxury'
+        }
+      },
+      {
+        id: 'person2',
+        name: 'Person 2',
+        attributes: {
+          'Lifestyle Vibe': 'Family-focused',
+          'Emotional Drivers': 'Comfort',
+          'Daily Routine': 'Commute-heavy',
+          'Weekend Personality': 'Chill-at-home',
+          'Social Expression': 'Low-profile',
+          'Preferred Car Traits': 'Cargo space',
+          'Ownership Style': 'Sentimental buyer',
+          'Purchase Concerns': 'Resale value',
+          'Decision Behavior': 'Emotional',
+          'Brand Relationship': 'Lifelong Mercedes fan'
+        }
+      },
+      {
+        id: 'person3',
+        name: 'Person 3',
+        attributes: {
+          'Lifestyle Vibe': 'Explorer',
+          'Emotional Drivers': 'Sustainability',
+          'Daily Routine': 'City errands',
+          'Weekend Personality': 'Off-roader',
+          'Social Expression': 'Travel blogging',
+          'Preferred Car Traits': 'Responsive drive',
+          'Ownership Style': 'Flipper',
+          'Purchase Concerns': 'Maintenance',
+          'Decision Behavior': 'Peer-influenced',
+          'Brand Relationship': 'AMG enthusiast'
+        }
+      }
+    ]
+  }
+}
+
+export default function Page() {
+  const [mode, setMode] = useState<'car'|'customer'>('car')
+  const [charId, setCharId] = useState(MODES.car.characters[0].id)
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false)
+  const endRef = useRef<HTMLDivElement>(null)
+
+  const character = MODES[mode].characters.find(c => c.id === charId)!
+
+  useEffect(() => {
+    // reset history when persona changes
+    setMessages([])
+  }, [mode, charId])
+
+  const buildSystemPrompt = () => {
+    const lines = Object.entries(character.attributes)
+      .map(([k,v]) => `• ${k}: ${v}`)
+    return `You are **${character.name}** (${MODES[mode].label}).\n${lines.join('\n')}`
+  }
+
+  const handleSend = async () => {
+    if (!input) return
+    const userMsg = { role: 'user' as const, content: input }
+    const next = [...messages, userMsg]
+    setMessages(next)
+    setInput('')
+    setLoading(true)
+
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        persona: buildSystemPrompt(),
+        messages: next
+      })
+    })
+    const { reply } = await res.json()
+    setMessages([...next, { role:'assistant', content:reply }])
+    setLoading(false)
+    endRef.current?.scrollIntoView({ behavior:'smooth' })
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="max-w-xl mx-auto p-4">
+      <div className="flex gap-2 mb-4">
+        <select
+          value={mode}
+          onChange={e => setMode(e.target.value as any)}
+          className="flex-1 border px-2 py-1 rounded"
+        >
+          {Object.entries(MODES).map(([key,{label}])=>(
+            <option key={key} value={key}>{label}</option>
+          ))}
+        </select>
+        <select
+          value={charId}
+          onChange={e => setCharId(e.target.value)}
+          className="flex-1 border px-2 py-1 rounded"
+        >
+          {MODES[mode].characters.map(c=>(
+            <option key={c.id} value={c.id}>{c.name}</option>
+          ))}
+        </select>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="flex flex-col space-y-3 mb-4 h-[60vh] overflow-y-auto">
+        {messages.map((m,i)=>(
+          <div
+            key={i}
+            className={`p-2 rounded ${
+              m.role==='user'
+                ? 'self-end bg-blue-500 text-white'
+                : 'self-start bg-gray-200 dark:bg-gray-700'
+            }`}
+          >{m.content}</div>
+        ))}
+        {loading && (
+          <div className="self-start p-2 rounded bg-gray-200 dark:bg-gray-700">
+            Typing…
+          </div>
+        )}
+        <div ref={endRef} />
+      </div>
+
+      <div className="flex">
+        <input
+          className="flex-1 border rounded-l px-3 py-2 focus:outline-none"
+          value={input}
+          onChange={e=>setInput(e.target.value)}
+          onKeyDown={e=>e.key==='Enter' && handleSend()}
+          placeholder="Type your message…"
+          disabled={loading}
+        />
+        <button
+          onClick={handleSend}
+          disabled={loading}
+          className="px-4 py-2 bg-blue-500 text-white rounded-r hover:bg-blue-600"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Send
+        </button>
+      </div>
     </div>
-  );
+  )
 }

@@ -17,8 +17,8 @@ export default function PremiumCarDisplay({ car, showBadge = true }: PremiumCarD
 const getCarImages = () => {
   if (car?.model && car.model.includes("GLC")) {
     return {
-      front: "/images/glc-coupe-front.jpg",
-      rear: "/images/glc-coupe-rear.jpg",
+      front: "/images/glc-coupe-front.avif",
+      rear: "/images/glc-coupe-front.avif",
       interior: "/images/glc-coupe-interior.png",
     }
   }

@@ -22,7 +22,7 @@ export async function GET() {
         voice: "Confident",
         matchScore: 93,
         matchExplanation: "Perfect for city driving, Matches your aesthetic, Aligns with your values",
-        image: "/images/glc-coupe-front.jpg",
+        image: "/images/glc-coupe-front.avif",
         color: "Obsidian Black",
       },
       {
@@ -60,7 +60,7 @@ export async function GET() {
         voice: "Playful",
         matchScore: 85,
         matchExplanation: "Perfect for spirited driving, Matches your bold style, Great for adventures",
-        image: "/images/cls.png",
+        image: "/images/cls.jpg",
         color: "Designo Diamond White",
       },
       {

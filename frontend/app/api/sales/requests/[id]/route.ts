@@ -44,7 +44,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
           voice: "Confident",
           matchScore: 93,
           matchExplanation: "Perfect for city driving, Matches your aesthetic, Aligns with your values",
-          image: "/images/glc-coupe-front.jpg",
+          image: "/images/glc-coupe-front.avif",
           color: "Obsidian Black",
         },
         appointmentDate: "2025-05-15",

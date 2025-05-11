@@ -1,14 +1,14 @@
 import type { CarPersona } from "@/types"
 
 export async function fetchCarMatchesFromStrapi(): Promise<CarPersona[]> {
-  const carRes = await fetch("http://localhost:1337/api/car-personas")
+  const carRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/car-personas`)
   const carData = await carRes.json()
   const cars = carData.data.map((entry: any) => ({
     id: entry.id,
     ...entry,
   }))
 
-  const custRes = await fetch("http://localhost:1337/api/customer-personas")
+  const custRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/customer-personas`)
   const custData = await custRes.json()
   const customer = custData.data?.[0]
 

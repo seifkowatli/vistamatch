@@ -1,5 +1,5 @@
 # Use an official Node runtime – Node 18 is a common choice for Next.js 15
-FROM node:18-alpine
+FROM node:22-alpine
 
 # Set working directory
 WORKDIR /app

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "car-persona",
     "pluralName": "car-personas",
-    "displayName": "Car Persona"
+    "displayName": "Car Persona",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,32 +16,68 @@
     },
     "modelIdentity": {
       "type": "enumeration",
-      "enum": ["Sporty", "Classic", "Executive", "Adventurous", "Urban"]
+      "enum": [
+        "Sporty",
+        "Classic",
+        "Executive",
+        "Adventurous",
+        "Urban"
+      ]
     },
     "usageHistory": {
       "type": "enumeration",
-      "enum": ["City-driven", "Off-road", "Long-distance", "Family", "Light use"],
+      "enum": [
+        "City-driven",
+        "Off-road",
+        "Long-distance",
+        "Family",
+        "Light use"
+      ],
       "multiple": true
     },
     "ownershipStyle": {
       "type": "enumeration",
-      "enum": ["Single-owner", "Fleet-owned", "Collector-owned"]
+      "enum": [
+        "Single-owner",
+        "Fleet-owned",
+        "Collector-owned"
+      ]
     },
     "serviceBehavior": {
       "type": "enumeration",
-      "enum": ["Regularly maintained", "Delayed maintenance", "Fully documented"]
+      "enum": [
+        "Regularly maintained",
+        "Delayed maintenance",
+        "Fully documented"
+      ]
     },
     "emotionalTone": {
       "type": "enumeration",
-      "enum": ["Nostalgic", "Loyal Companion", "Wild Spirit", "Urban Warrior"]
+      "enum": [
+        "Nostalgic",
+        "Loyal Companion",
+        "Wild Spirit",
+        "Urban Warrior"
+      ]
     },
     "visualVibe": {
       "type": "enumeration",
-      "enum": ["Sleek", "Bold", "Understated", "Vintage", "Futuristic"]
+      "enum": [
+        "Sleek",
+        "Bold",
+        "Understated",
+        "Vintage",
+        "Futuristic"
+      ]
     },
     "interiorEnergy": {
       "type": "enumeration",
-      "enum": ["Minimalist", "Tech-heavy", "Cozy", "Driver-focused"],
+      "enum": [
+        "Minimalist",
+        "Tech-heavy",
+        "Cozy",
+        "Driver-focused"
+      ],
       "multiple": true
     },
     "notableMemories": {
@@ -48,11 +85,26 @@
     },
     "drivingFeel": {
       "type": "enumeration",
-      "enum": ["Aggressive", "Smooth", "Relaxed", "Responsive", "Stable"]
+      "enum": [
+        "Aggressive",
+        "Smooth",
+        "Relaxed",
+        "Responsive",
+        "Stable"
+      ]
     },
     "voice": {
       "type": "enumeration",
-      "enum": ["Humble", "Bold", "Playful", "Wise", "Youthful"]
+      "enum": [
+        "Humble",
+        "Bold",
+        "Playful",
+        "Wise",
+        "Youthful"
+      ]
+    },
+    "model": {
+      "type": "string"
     }
   }
 }

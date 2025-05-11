@@ -5,23 +5,26 @@ import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import type { CarPersona } from "@/types"
 import CarCard from "@/components/CarCard"
+import { fetchCarMatchesFromStrapi } from "@/lib/match"
 
 export default function MatchPage() {
   const router = useRouter()
   const [carMatches, setCarMatches] = useState<CarPersona[]>([])
   const [isLoading, setIsLoading] = useState(true)
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
-  useEffect(() => {
-    // Retrieve car matches from localStorage
-    const storedMatches = localStorage.getItem("carMatches")
-    if (storedMatches) {
-      // Parse and sort by matchScore in descending order
-      const matches = JSON.parse(storedMatches) as CarPersona[]
-      const sortedMatches = [...matches].sort((a, b) => b.matchScore - a.matchScore)
-      setCarMatches(sortedMatches)
-    }
-    setIsLoading(false)
-  }, [])
+useEffect(() => {
+  fetchCarMatchesFromStrapi()
+    .then((matches) => {
+      const sorted = matches.sort((a, b) => b.matchScore - a.matchScore)
+      setCarMatches(sorted)
+    })
+    .catch((err) => {
+      console.error("Matching error:", err)
+    })
+    .finally(() => setIsLoading(false))
+}, [])
+
 
   if (isLoading) {
     return (

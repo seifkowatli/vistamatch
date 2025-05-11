@@ -40,25 +40,26 @@ export async function getCarMatches(customerPersonaId: string): Promise<CarPerso
 
 export async function sendChatMessage(
   role: "car" | "sales",
-  persona: Record<string, any>,
-  message: string,
+  persona: Record<string, any> | string,
+  message: string
 ): Promise<{ reply: string }> {
-  try {
-    const response = await fetch(`${API_BASE_URL}/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ role, persona, message }),
-    })
+  const res = await fetch(`${API_BASE_URL}/chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      role,
+      persona,
+      messages: [{ role: "user", content: message }]
+    }),
+  })
 
-    if (!response.ok) {
-      throw new Error("Failed to send chat message")
-    }
-
-    return await response.json()
-  } catch (error) {
-    console.error("Error sending chat message:", error)
-    throw error
+  if (!res.ok) {
+    throw new Error("Failed to send chat message")
   }
+
+  return await res.json()
 }
+
+

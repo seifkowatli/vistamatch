@@ -48,7 +48,7 @@ export default function ChatPage() {
         {
           id: "1",
           role: "car",
-          content: `Hello! I'm the ${parsedCar.year} ${parsedCar.model}. How can I assist you today?`,
+          content: `Hello! I'm the ${parsedCar.year} ${parsedCar.model}. what do you want to know about me?`,
           timestamp: new Date(),
         },
       ])

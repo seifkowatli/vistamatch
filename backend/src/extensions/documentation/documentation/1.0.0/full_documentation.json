@@ -2599,6 +2599,9 @@
                   "Youthful"
                 ]
               },
+              "model": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -2751,6 +2754,9 @@
               "Wise",
               "Youthful"
             ]
+          },
+          "model": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -3139,6 +3145,9 @@
                     "Wise",
                     "Youthful"
                   ]
+                },
+                "model": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",

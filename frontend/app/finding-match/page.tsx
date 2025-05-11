@@ -6,6 +6,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import type { CustomerPersona } from "@/types"
 import { getCarMatches } from "@/lib/api"
+import { fetchCarMatchesFromStrapi } from "@/lib/match" // ✅ use the correct function
 
 export default function FindingMatchPage() {
   const router = useRouter()
@@ -75,22 +76,21 @@ export default function FindingMatchPage() {
   }, [customerPersona, loadingMessages.length])
 
   // Fetch car matches once
-  useEffect(() => {
-    if (!customerPersona || hasStartedFetch) return
+useEffect(() => {
+  if (hasStartedFetch) return
 
-    const fetchMatches = async () => {
-      try {
-        setHasStartedFetch(true)
-        const carMatches = await getCarMatches(customerPersona.id)
-        // Store car matches in localStorage
-        localStorage.setItem("carMatches", JSON.stringify(carMatches))
-      } catch (error) {
-        console.error("Error fetching car matches:", error)
-      }
+  const fetch = async () => {
+    try {
+      setHasStartedFetch(true)
+      const matches = await fetchCarMatchesFromStrapi()
+      localStorage.setItem("carMatches", JSON.stringify(matches))
+    } catch (err) {
+      console.error("Match error:", err)
     }
+  }
 
-    fetchMatches()
-  }, [customerPersona, hasStartedFetch])
+  fetch()
+}, [hasStartedFetch])
 
   // Redirect to match page when loading is complete
   useEffect(() => {
@@ -151,10 +151,10 @@ export default function FindingMatchPage() {
           }}
         >
           <Image
-            src="/images/mercedes-logo.png"
+            src="/images/mercedes-logo-homepage.png"
             alt="Mercedes-Benz Logo"
             fill
-            className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+            className="object-contain "
             priority
           />
         </motion.div>

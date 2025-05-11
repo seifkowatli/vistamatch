@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiCarPersonaCarPersona extends Struct.CollectionTypeSchema {
   collectionName: 'car_personas';
   info: {
+    description: '';
     displayName: 'Car Persona';
     pluralName: 'car-personas';
     singularName: 'car-persona';
@@ -402,6 +403,7 @@ export interface ApiCarPersonaCarPersona extends Struct.CollectionTypeSchema {
       'api::car-persona.car-persona'
     > &
       Schema.Attribute.Private;
+    model: Schema.Attribute.String;
     modelIdentity: Schema.Attribute.Enumeration<
       ['Sporty', 'Classic', 'Executive', 'Adventurous', 'Urban']
     >;

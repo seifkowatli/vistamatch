@@ -14,21 +14,20 @@ export default function PremiumCarDisplay({ car, showBadge = true }: PremiumCarD
   const [activeView, setActiveView] = useState<"front" | "rear" | "interior">("front")
 
   // Get the appropriate car images based on the model
-  const getCarImages = () => {
-    if (car.model.includes("GLC")) {
-      return {
-        front: "/images/glc-coupe-front.jpg",
-        rear: "/images/glc-coupe-rear.jpg",
-        interior: "/images/glc-coupe-interior.png",
-      }
-    }
-    // Fallback to placeholder images for other models
+const getCarImages = () => {
+  if (car?.model && car.model.includes("GLC")) {
     return {
-      front: car.image || "/placeholder.svg?height=500&width=800&query=luxury car front view",
-      rear: "/placeholder.svg?height=500&width=800&query=luxury car rear view",
-      interior: "/placeholder.svg?height=500&width=800&query=luxury car interior",
+      front: "/images/glc-coupe-front.jpg",
+      rear: "/images/glc-coupe-rear.jpg",
+      interior: "/images/glc-coupe-interior.png",
     }
   }
+  return {
+    front: car?.image || "/placeholder.svg?height=500&width=800&query=luxury car front view",
+    rear: "/placeholder.svg?height=500&width=800&query=luxury car rear view",
+    interior: "/placeholder.svg?height=500&width=800&query=luxury car interior",
+  }
+}
 
   const carImages = getCarImages()
 

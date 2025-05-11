@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: strapi_db
+      MYSQL_USER: strapi_user
+      MYSQL_PASSWORD: strapi_pass
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3307:3306"
+
+  # Strapi CMS Service (v5)
+  cms:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: production
+      DATABASE_CLIENT: mysql
+      DATABASE_NAME: strapi_db
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: strapi_user
+      DATABASE_PASSWORD: strapi_pass
+    ports:
+      - "5566:1337"
+    restart: always
+
+  # Next.js Frontend Service (v15)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - cms
+    ports:
+      - "7788:3000"
+    restart: always
+
+volumes:
+  db_data:

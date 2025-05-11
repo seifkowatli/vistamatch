@@ -15,7 +15,21 @@ export default function PremiumCarDisplay({ car, showBadge = true }: PremiumCarD
 
   // Get the appropriate car images based on the model
 const getCarImages = () => {
-  if (car?.model && car.model.includes("GLC")) {
+  if (car?.model && car.model.includes("CLS")) {
+    return {
+      front: "/images/glc-coupe-front.avif",
+      rear: "/images/glc-coupe-front.avif",
+      interior: "/images/glc-coupe-interior.png",
+    }
+  }
+    if (car?.model && car.model.includes("EQS")) {
+    return {
+      front: "/images/glc-coupe-front.avif",
+      rear: "/images/glc-coupe-front.avif",
+      interior: "/images/glc-coupe-interior.png",
+    }
+  }
+    if (car?.model && car.model.includes("GLC")) {
     return {
       front: "/images/glc-coupe-front.avif",
       rear: "/images/glc-coupe-front.avif",

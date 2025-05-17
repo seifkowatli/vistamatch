@@ -109,11 +109,11 @@ export default function PersonaAvatar({ persona, type, isActive = false, size = 
           <h4 className="text-sm font-medium">{getPersonaTitle()}</h4>
 
           <div className="flex flex-wrap justify-center gap-1 mt-1">
-            {getPersonaTags().map((tag, index) => (
+            {/* {getPersonaTags().map((tag, index) => (
               <span key={index} className="text-xs px-2 py-0.5 rounded-full bg-blue-900/40 text-blue-300">
                 {tag}
               </span>
-            ))}
+            ))} */}
           </div>
         </div>
       )}
